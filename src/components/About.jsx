@@ -7,6 +7,7 @@ import { services } from '../constants'
 import { fadeIn, textVariant } from '../utils/motion'
 
 import { SectionWrapper } from '../hoc'
+import { ComputersCanvas } from './canvas'
 
 const ServiceCard = ({ index, title, icon }) => {
   return (
@@ -21,7 +22,7 @@ const ServiceCard = ({ index, title, icon }) => {
             scale: 1,
             speed: 450
           }}
-          className="bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evently items-center flex-col"
+          className="bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex flex-col justify-evenly items-center"
         >
           <img src={icon} alt={title} className="w-16 h-16 object-contain" />
           <h3 className="text-white text-[20px] font-bold text-center">
@@ -36,6 +37,32 @@ const ServiceCard = ({ index, title, icon }) => {
 const About = () => {
   return (
     <>
+      <div className="relative h-screen w-full -mt-[67vh] mb-16">
+        <ComputersCanvas />
+
+        <div className="absolute bottom-6 w-full flex justify-center items-center">
+          <a href="#about">
+            <div className="w-[32px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2">
+              <motion.div
+                animate={{
+                  y: [0, 24, 0],
+                }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                  repeatType: 'loop'
+                }}
+                className="w-3 h-3 rounded-full bg-secondary mb-1"
+              />
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <span className="hash-span" id="about">
+        &nbsp;
+      </span>
+
       <motion.div
         variants={textVariant}
       >
@@ -59,4 +86,4 @@ const About = () => {
   )
 }
 
-export default SectionWrapper(About, 'about')
+export default SectionWrapper(About, '')
